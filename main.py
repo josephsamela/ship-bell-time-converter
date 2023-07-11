@@ -115,10 +115,11 @@ class Schedule:
 if __name__ == '__main__':
 
     # This program converts any time of day into Ship's Bell Time!
-    # Ship's Bell Time is a system of time-keeping that has been used abord marine vessels since as early as the 1400s
-    # and is still in-use today! This system divides the day (24hrs) into 7 "watches". 
+    # Ship's Bell Time is a system of time-keeping that has been used aboard marine vessels since as early
+    # as the 1400s and is still in-use today! This system divides the day (24hrs) into 7 "watches". 
     #
     # WATCH         START    END
+    # ----------------------------
     # First         20:00    00:00
     # Middle        00:00    04:00
     # Morning       04:00    08:00
@@ -127,11 +128,13 @@ if __name__ == '__main__':
     # First Dog     16:00    18:00
     # Second Dog    18:00    20:00
     #
-    # The progress of each watch is announced every 30 minutes by ringing the ship bell. For example, consider a 4 hour watch. 
-    # After the first 30 minutes, the bell is rung once for "First Bell". After the next 30 minutes is rung twice 
-    # for "Two Bells". After 30 more minutes it's rung thrice "Three Bells", and so on. After all 4 hours have passed
-    # the bell is rung for "Eight Bells" indicating the end of the current watch and the begining of the next.
-    # With all that said - here's how to use this program to check the watch status for a given time!
+    # The progress of each watch is announced every 30 minutes by ringing the ship bell. 
+    # For example, consider a 4 hour watch. After the first 30 minutes, the bell is rung once 
+    # for "First Bell". After the next 30 minutes the bell is rung twice for "Two Bells". 
+    # After 30 more minutes it's rung thrice "Three Bells", and so on. After all 4 hours have passed
+    # (8 30min increments) the bell is rung for "Eight Bells" indicating the end of the 
+    # current watch and the beginning of the next. 
+    # Enough explaination, here's how to use this program to check the watch status for a given time!
 
     # Start by initializeing the Scheudle with the target time.
     s = Schedule('20:11') # Pass the target time as a string like (ie. '23:45', '00:28', '15:13', etc.)
