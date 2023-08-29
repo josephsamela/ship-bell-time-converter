@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from schedules import watch_schedule, bell_schedule
 import copy
 
@@ -72,11 +72,13 @@ class Schedule:
         for bell in bell_schedule:
             self.bells.append(Bell(bell['time'], bell['count']))
 
+    @property
     def current_watch(self):
         for watch in self.watches:
             if watch.start <= self.now < watch.end:
                 return watch
-
+    
+    @property
     def next_watch(self):
         for i, watch in enumerate(self.watches):
             if watch.start <= self.now < watch.end:
@@ -87,11 +89,13 @@ class Schedule:
                         i+1 - len(self.watches)
                     ]
 
+    @property
     def last_watch(self):
         for i, watch in enumerate(self.watches):
             if watch.start <= self.now < watch.end:
                 return self.watches[i-1]
 
+    @property
     def next_bell(self):
         prev_bell = self.bells[-1]
         for bell in self.bells:
@@ -99,6 +103,7 @@ class Schedule:
                 return bell
             prev_bell = bell
 
+    @property
     def last_bell(self):
         prev_bell = self.bells[-1]
         for i, bell in enumerate(self.bells):
@@ -106,11 +111,13 @@ class Schedule:
                 return self.bells[i-1]
             prev_bell = bell
 
+    @property
     def min_to_next_bell(self):
-        return self.next_bell().time - self.now
+        return self.next_bell.time - self.now
     
+    @property
     def min_since_last_bell(self):
-        return self.now - self.last_bell().time
+        return self.now - self.last_bell.time
 
 if __name__ == '__main__':
 
@@ -141,15 +148,15 @@ if __name__ == '__main__':
     s = Schedule()        # ...or leave it blank and it'll default to current time!
 
     # Use the Schedule you created to check the watch status for the time...
-    current_watch = s.current_watch().name
-    next_watch = s.next_watch().name
-    last_watch = s.last_watch().name
+    current_watch = s.current_watch.name
+    next_watch = s.next_watch.name
+    last_watch = s.last_watch.name
 
     # ...or status of the bell!
-    next_bell = s.next_bell().count
-    last_bell = s.last_bell().count
-    minutes_to_next_bell = s.min_to_next_bell()
-    minutes_since_last_bell = s.min_since_last_bell()
+    next_bell = s.next_bell.count
+    last_bell = s.last_bell.count
+    minutes_to_next_bell = s.min_to_next_bell
+    minutes_since_last_bell = s.min_since_last_bell
 
     # Example: Print out current time in human readable text.
     if minutes_to_next_bell == 1:
