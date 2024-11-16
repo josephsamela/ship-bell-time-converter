@@ -19,7 +19,6 @@ class Time:
         return hours * 60 + minutes
 
     def __lt__(self, other):
-
         temp = copy.copy(other)
         if self.hour >= 20 and other.hour == 0:
             temp.hour = 24
@@ -143,7 +142,7 @@ if __name__ == '__main__':
     # current watch and the beginning of the next. 
     # Enough explaination, here's how to use this program to check the watch status for a given time!
 
-    # Start by initializeing the Scheudle with the target time.
+    # Start by initializing the Schedule with the target time.
     s = Schedule('20:11') # Pass the target time as a string like (ie. '23:45', '00:28', '15:13', etc.)
     s = Schedule()        # ...or leave it blank and it'll default to current time!
 
